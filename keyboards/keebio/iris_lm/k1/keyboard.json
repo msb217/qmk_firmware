@@ -6,7 +6,7 @@
         "bootmagic": true,
         "extrakey": true,
         "mousekey": true,
-        "rgb_matrix": true
+        "rgb_matrix": false
     },
     "ws2812": {
         "driver": "pwm",
