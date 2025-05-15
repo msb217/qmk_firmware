@@ -15,17 +15,29 @@
 #include "process_combo.h"
 enum combo_events {
     UIO_BACKSPACE,
+    SYM_BACKSPACE,
+    NUM_BACKSPACE,
     JKL_ENTER,
+    SYM_ENTER,
+    NUM_ENTER,
     SDF_ESCAPE,
     COMBO_LENGTH
 };
 
 const uint16_t PROGMEM uio_backspace[] = {KC_U, KC_I, KC_O, COMBO_END};
+const uint16_t PROGMEM sym_backspace[] = {KC_AMPR, KC_ASTR, KC_LPRN, COMBO_END};
+const uint16_t PROGMEM num_backspace[] = {KC_P7, KC_P8, KC_P9, COMBO_END};
 const uint16_t PROGMEM jkl_enter[] = {LT(_SYM,KC_J), RGUI_T(KC_K), RALT_T(KC_L), COMBO_END};
+const uint16_t PROGMEM sym_enter[] = {KC_RCBR, KC_PPLS, KC_EQL, COMBO_END};
+const uint16_t PROGMEM num_enter[] = {KC_P4, KC_P5, KC_P6, COMBO_END};
 const uint16_t PROGMEM sdf_escape[] = {LALT_T(KC_S), LGUI_T(KC_D), LT(_SYM,KC_F), COMBO_END};
 combo_t key_combos[COMBO_LENGTH] = {
     [UIO_BACKSPACE] = COMBO(uio_backspace, KC_BSPC),
+    [SYM_BACKSPACE] = COMBO(sym_backspace, KC_BSPC),
+    [NUM_BACKSPACE] = COMBO(num_backspace, KC_BSPC),
     [JKL_ENTER] = COMBO(jkl_enter, KC_ENT),
+    [SYM_ENTER] = COMBO(sym_enter, KC_ENT),
+    [NUM_ENTER] = COMBO(num_enter, KC_ENT),
     [SDF_ESCAPE] = COMBO(sdf_escape, KC_ESC)
 };
 
@@ -33,9 +45,9 @@ combo_t key_combos[COMBO_LENGTH] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
 			KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-            KC_NO, KC_Q, KC_W, KC_E, LT(_NUM,KC_R), KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_NO,
+            KC_NO, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_NO,
             KC_NO, LCTL_T(KC_A), LALT_T(KC_S), LGUI_T(KC_D), LT(_SYM,KC_F), KC_G, KC_H, LT(_SYM,KC_J), RGUI_T(KC_K), RALT_T(KC_L), RCTL_T(KC_SCLN), KC_NO,
-            KC_NO, HYPR_T(KC_Z), KC_X, KC_C, KC_V, KC_B, KC_NO, KC_NO, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
+            KC_NO, HYPR_T(KC_Z), KC_X, KC_C, LT(_NUM,KC_V), KC_B, KC_NO, KC_NO, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_NO,
             MO(_FUNC), LT(_FUNC,KC_TAB), LSFT_T(KC_SPC), RSFT_T(KC_SPC), MO(_NAV), MO(_FUNC)
 	),
     [_NAV] = LAYOUT(
@@ -49,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 			KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
             KC_NO, KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_NO,
             KC_NO, KC_NO, KC_PIPE, KC_BSLS, KC_LCBR, KC_UNDS, KC_MINS, KC_RCBR, KC_PPLS, KC_EQL, KC_COLN, KC_NO,
-            KC_NO, KC_NO, KC_NO, KC_QUOT, KC_DQUO, KC_LBRC, KC_NO, KC_NO, KC_RBRC, KC_NO, KC_LT, KC_GT, KC_QUES, KC_NO,
+            KC_NO, KC_TILDE, KC_GRAVE, KC_QUOT, KC_DQUO, KC_LBRC, KC_NO, KC_NO, KC_RBRC, KC_NO, KC_LT, KC_GT, KC_QUES, KC_NO,
             KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
 	),
     [_FUNC] = LAYOUT(
