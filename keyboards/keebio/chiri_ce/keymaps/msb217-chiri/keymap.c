@@ -105,6 +105,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return 125;
         case RSFT_T(KC_SPC):
             return 125;
+        case QK_TAP_DANCE ... QK_TAP_DANCE_MAX:
+            return 275;
         default:
             return TAPPING_TERM;
     }
